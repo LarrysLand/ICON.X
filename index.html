@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B|NK D|SGN</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Main Section -->
+    <div id="main-section" class="overlay active">
+        <div class="container">
+            <div class="hero">
+                <div class="logo-title">
+                    <!-- Circular Logo -->
+                    <div class="logo-circle"></div>
+                    <!-- Title -->
+                    <h1 class="title">B|NK D|SGN</h1>
+                </div>
+                <p class="subtitle">Where visions meet reality through the lens</p>
+            </div>
+            <div class="cta-buttons">
+                <a href="#" id="next-to-portfolio" class="cta-button">View Portfolio</a>
+                <a href="#" id="next-to-contact" class="cta-button">Contact Us</a>
+            </div>
+            <div class="images">
+                <div class="image-box"><img src="model-in-gold-fashion.webp" alt="Portrait 1" class="clickable-image"></div>
+                <div class="image-box"><img src="modeling-portfolio-swimsuit-bathing-suit-photo-571aaf523df78c564057ec9b.webp" alt="Portrait 2" class="clickable-image"></div>
+                <div class="image-box"><img src="360_F_335908278_w7sxnB4jgJOBpk2MPzC0P7LdlgOKJRQ6.webp" alt="Portrait 3" class="clickable-image"></div>
+            </div>
+            <div class="footer">
+                <p>Portraits that whisper stories, freeze emotions</p>
+                <div class="social-icons">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link"><i class="fas fa-link"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Section -->
+    <div id="portfolio-section" class="overlay">
+        <div class="container">
+            <h1 class="title">Portfolio</h1>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="moodboard1.jpg" alt="Moodboard 1">
+                    <h2>Moodboard 1</h2>
+                    <p>A curated collection of visuals for inspiration.</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="moodboard2.jpg" alt="Moodboard 2">
+                    <h2>Moodboard 2</h2>
+                    <p>Vivid colors and bold designs to inspire.</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="moodboard3.jpg" alt="Moodboard 3">
+                    <h2>Moodboard 3</h2>
+                    <p>Subtle tones and natural elements.</p>
+                </div>
+            </div>
+            <a href="#" id="back-to-main-from-portfolio" class="scroll-button">Back</a>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact-section" class="overlay">
+        <div class="container">
+            <h1 class="title">Contact Us</h1>
+            <p>Email: contact@bnkdsgn.com</p>
+            <p>Phone: +1 234 567 890</p>
+            <p>Address: 123 Creative Lane, Design City</p>
+            <a href="#" id="back-to-main-from-contact" class="scroll-button">Back</a>
+        </div>
+    </div>
+
+    <!-- Image Modal Overlay -->
+    <div id="image-modal" class="image-overlay">
+        <span id="close-modal" class="close-button">&times;</span>
+        <img id="modal-image" src="" alt="Full View">
+    </div>
+
+    <script>
+        // Overlay toggling for sections
+        const portfolioButton = document.getElementById('next-to-portfolio');
+        const contactButton = document.getElementById('next-to-contact');
+        const backToMainFromPortfolio = document.getElementById('back-to-main-from-portfolio');
+        const backToMainFromContact = document.getElementById('back-to-main-from-contact');
+
+        const mainSection = document.getElementById('main-section');
+        const portfolioSection = document.getElementById('portfolio-section');
+        const contactSection = document.getElementById('contact-section');
+
+        portfolioButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            mainSection.classList.remove('active');
+            portfolioSection.classList.add('active');
+        });
+
+        contactButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            mainSection.classList.remove('active');
+            contactSection.classList.add('active');
+        });
+
+        backToMainFromPortfolio.addEventListener('click', (e) => {
+            e.preventDefault();
+            portfolioSection.classList.remove('active');
+            mainSection.classList.add('active');
+        });
+
+        backToMainFromContact.addEventListener('click', (e) => {
+            e.preventDefault();
+            contactSection.classList.remove('active');
+            mainSection.classList.add('active');
+        });
+
+        // Image modal functionality
+        const clickableImages = document.querySelectorAll('.clickable-image');
+        const imageModal = document.getElementById('image-modal');
+        const modalImage = document.getElementById('modal-image');
+        const closeModal = document.getElementById('close-modal');
+
+        clickableImages.forEach(image => {
+            image.addEventListener('click', () => {
+                modalImage.src = image.src;
+                imageModal.classList.add('active');
+            });
+        });
+
+        closeModal.addEventListener('click', () => {
+            imageModal.classList.remove('active');
+        });
+
+        imageModal.addEventListener('click', (e) => {
+            if (e.target === imageModal) {
+                imageModal.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
